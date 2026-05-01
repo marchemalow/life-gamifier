@@ -3,133 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life RPG | Pro Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <title>Life RPG | Paradigm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div class="app-container">
-        <!-- HEADER : PROFIL MULTI-CLASSE -->
-        <header class="profile-header glass">
-            <div class="profile-main">
-                <div class="avatar-container">
-                    <div class="avatar-glow"></div>
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" class="avatar">
+    <div class="glow-bg"></div>
+
+    <div class="app-shell">
+        <!-- HEADER GLOBAL -->
+        <header class="main-header glass">
+            <div class="user-profile">
+                <div class="avatar-wrapper">
+                    <img src="https://api.dicebear.com/7.x/shapes/svg?seed=Felix" alt="Avatar">
+                    <div class="lvl-badge">LVL <span id="global-lvl">1</span></div>
                 </div>
-                <div class="profile-info">
-                    <h1 class="tech-font">NIVEAU <span id="global-lvl">1</span></h1>
-                    <div class="xp-bar-container main-xp">
-                        <div id="global-xp-fill" class="xp-bar-fill"></div>
+                <div class="xp-core">
+                    <div class="xp-info">
+                        <span class="label uppercase bold tracking">Progression Globale</span>
+                        <span id="global-xp-text" class="value tech">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="global-xp-bar" class="progress-fill accent-pink"></div>
                     </div>
                 </div>
             </div>
-            
-            <div class="sub-classes">
-                <div class="class-card academic">
-                    <div class="class-header">
-                        <i data-lucide="graduation-cap"></i>
-                        <span class="tech-font">LVL <span id="lvl-academic">1</span></span>
+
+            <div class="sub-levels">
+                <div class="sub-card glass" data-cat="academic">
+                    <div class="sub-card-header">
+                        <i data-lucide="graduation-cap" class="cyan"></i>
+                        <span id="lvl-academic">LVL 1</span>
                     </div>
-                    <div class="mini-bar"><div id="xp-academic" class="fill"></div></div>
-                    <span class="class-label">Academic</span>
+                    <div class="mini-track"><div id="xp-academic" class="fill accent-cyan"></div></div>
+                    <label>Academic</label>
                 </div>
-                <div class="class-card creator">
-                    <div class="class-header">
-                        <i data-lucide="youtube"></i>
-                        <span class="tech-font">LVL <span id="lvl-creator">1</span></span>
+                <div class="sub-card glass" data-cat="creator">
+                    <div class="sub-card-header">
+                        <i data-lucide="youtube" class="orange"></i>
+                        <span id="lvl-creator">LVL 1</span>
                     </div>
-                    <div class="mini-bar"><div id="xp-creator" class="fill"></div></div>
-                    <span class="class-label">Creator</span>
+                    <div class="mini-track"><div id="xp-creator" class="fill accent-orange"></div></div>
+                    <label>Creator</label>
                 </div>
-                <div class="class-card copywriter">
-                    <div class="class-header">
-                        <i data-lucide="pen-tool"></i>
-                        <span class="tech-font">LVL <span id="lvl-copywriter">1</span></span>
+                <div class="sub-card glass" data-cat="copywriter">
+                    <div class="sub-card-header">
+                        <i data-lucide="pen-tool" class="pink"></i>
+                        <span id="lvl-copywriter">LVL 1</span>
                     </div>
-                    <div class="mini-bar"><div id="xp-copywriter" class="fill"></div></div>
-                    <span class="class-label">Copywriter</span>
+                    <div class="mini-track"><div id="xp-copywriter" class="fill accent-pink"></div></div>
+                    <label>Copywriter</label>
                 </div>
             </div>
         </header>
 
-        <main class="dashboard-grid">
-            
-            <!-- QUÊTES JOURNALIÈRES -->
-            <section class="card glass section-quests">
-                <h2><i data-lucide="swords"></i> QUÊTES DU JOUR</h2>
-                <div id="quest-list" class="quest-list">
-                    <!-- Les quêtes sont générées par le JS pour assurer la persistance -->
-                </div>
-            </section>
-
-            <!-- STAMINA & STATS -->
-            <div class="side-col">
-                <section class="card glass section-stamina">
-                    <h2><i data-lucide="zap"></i> STAMINA</h2>
-                    <div class="stamina-gauge">
-                        <div class="stamina-fill" id="stamina-fill"></div>
+        <main class="dashboard-content">
+            <!-- COLONNE GAUCHE : QUÊTES & PIPELINE -->
+            <div class="col-main">
+                <section class="card glass">
+                    <div class="card-header">
+                        <h2><i data-lucide="layout-list"></i> Quêtes Journalières</h2>
+                        <button class="btn-add" id="add-quest-btn"><i data-lucide="plus"></i></button>
                     </div>
-                    <p id="stamina-text" class="tech-font">100%</p>
-                    <p class="stamina-tip">L'énergie baisse pendant le travail.</p>
+                    <div id="quest-container" class="quest-list">
+                        <!-- Dynamique -->
+                    </div>
+                    <!-- Formulaire ajout caché par défaut -->
+                    <div id="quest-form" class="quest-form hidden">
+                        <input type="text" id="quest-input" placeholder="Titre de la quête...">
+                        <select id="quest-cat">
+                            <option value="academic">Academic</option>
+                            <option value="creator">Creator</option>
+                            <option value="copywriter">Copywriter</option>
+                        </select>
+                        <button id="confirm-quest">Ajouter</button>
+                    </div>
                 </section>
 
-                <section class="card glass section-loot">
-                    <h2><i data-lucide="coins"></i> TRÉSOR & LOOT</h2>
-                    <div class="income-controls">
-                        <button onclick="changeMoney(-10)">-</button>
-                        <span id="current-money" class="tech-font">0€</span>
-                        <button onclick="changeMoney(10)">+</button>
+                <section class="card glass">
+                    <div class="card-header">
+                        <h2><i data-lucide="workflow"></i> Pipeline YouTube</h2>
                     </div>
-                    <div class="goal-progress">
-                        <div class="mini-bar"><div id="money-fill" class="fill"></div></div>
-                        <p class="goal-label">Objectif: <span contenteditable="true" id="goal-name">Nouvelle Caméra</span></p>
-                        <p class="goal-target">Cible: <span contenteditable="true" id="goal-price">1200</span>€</p>
+                    <div class="pipeline-grid">
+                        <div class="pipe-col">
+                            <label>IDÉE</label>
+                            <div contenteditable="true" class="editable-area" id="pipe-idea">...</div>
+                        </div>
+                        <div class="pipe-col">
+                            <label>SCRIPT & REC</label>
+                            <div contenteditable="true" class="editable-area" id="pipe-script">...</div>
+                        </div>
+                        <div class="pipe-col">
+                            <label>MONTAGE & UP</label>
+                            <div contenteditable="true" class="editable-area" id="pipe-upload">...</div>
+                        </div>
                     </div>
                 </section>
             </div>
 
-            <!-- PIPELINE YOUTUBE -->
-            <section class="card glass section-pipeline">
-                <h2><i data-lucide="layout"></i> PIPELINE CRÉATION</h2>
-                <div class="kanban">
-                    <div class="kanban-col">
-                        <span class="col-title">IDÉE</span>
-                        <div contenteditable="true" class="kanban-task" id="pipe-idea">Titre vidéo...</div>
+            <!-- COLONNE DROITE : STAMINA & LOOT -->
+            <div class="col-side">
+                <section class="card glass status-card">
+                    <div class="card-header"><h2><i data-lucide="zap"></i> Stamina</h2></div>
+                    <div class="stamina-visual">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path id="stamina-circle" class="circle accent-orange" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="stamina-val"><span id="stamina-num">100</span>%</div>
                     </div>
-                    <div class="kanban-col">
-                        <span class="col-title">SCRIPT / REC</span>
-                        <div contenteditable="true" class="kanban-task" id="pipe-script">En cours...</div>
-                    </div>
-                    <div class="kanban-col">
-                        <span class="col-title">MONTAGE / UP</span>
-                        <div contenteditable="true" class="kanban-task" id="pipe-upload">Fini...</div>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- BOSSES / MILESTONES -->
-            <section class="card glass section-milestones">
-                <h2><i data-lucide="trophy"></i> BOSS DE FIN (MILESTONES)</h2>
-                <div class="milestone-item">
-                    <div class="milestone-icon green"><i data-lucide="target"></i></div>
-                    <div class="milestone-info">
-                        <strong contenteditable="true" id="ms-1-title">Bac de Français</strong>
-                        <span contenteditable="true" id="ms-1-desc">Obtenir mention TB</span>
+                <section class="card glass loot-card">
+                    <div class="card-header"><h2><i data-lucide="gem"></i> Trésor</h2></div>
+                    <div class="treasure-display">
+                        <div class="counter-group">
+                            <button onclick="updateMoney(-10)">-</button>
+                            <span id="money-count" class="money-text">0</span><span class="currency">€</span>
+                            <button onclick="updateMoney(10)">+</button>
+                        </div>
+                        <div class="loot-goal">
+                            <label>Objectif : <span contenteditable="true" id="goal-name">Sony ZV-E10</span></label>
+                            <div class="progress-track mini">
+                                <div id="money-bar" class="progress-fill accent-cyan"></div>
+                            </div>
+                            <span class="goal-price"><span id="goal-val">1200</span>€</span>
+                        </div>
                     </div>
-                </div>
-                <div class="milestone-item">
-                    <div class="milestone-icon orange"><i data-lucide="users"></i></div>
-                    <div class="milestone-info">
-                        <strong contenteditable="true" id="ms-2-title">1 000 Abonnés</strong>
-                        <span contenteditable="true" id="ms-2-desc">Quête Légendaire</span>
-                    </div>
-                </div>
-            </section>
-
+                </section>
+            </div>
         </main>
     </div>
 
