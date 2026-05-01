@@ -1,0 +1,214 @@
+:root {
+    --bg-color: #0a0a0c;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-main: #e0e0e0;
+    --text-dim: #888;
+    
+    --yt-orange: #ff6b00;
+    --copy-blue: #00d2ff;
+    --lycee-green: #00ff88;
+    --xp-purple: #a855f7;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+/* HEADER STYLE */
+.profile-header {
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-container {
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+}
+
+.avatar-glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--xp-purple);
+    filter: blur(15px);
+    opacity: 0.4;
+    border-radius: 50%;
+}
+
+.xp-bar-container {
+    width: 250px;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--xp-purple), #d8b4fe);
+    box-shadow: 0 0 10px var(--xp-purple);
+}
+
+.sub-classes {
+    display: flex;
+    gap: 15px;
+}
+
+.class-card {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    min-width: 140px;
+}
+
+.class-card i { margin-bottom: 8px; width: 18px; }
+.academic i { color: var(--lycee-green); }
+.creator i { color: var(--yt-orange); }
+.copywriter i { color: var(--copy-blue); }
+
+.mini-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+.academic .fill { background: var(--lycee-green); }
+.creator .fill { background: var(--yt-orange); }
+.copywriter .fill { background: var(--copy-blue); }
+
+/* GRID LAYOUT */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h2 i { width: 18px; }
+
+/* QUESTS */
+.quest-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.quest-item:hover { background: rgba(255,255,255,0.06); }
+
+/* STAMINA */
+.stamina-gauge {
+    height: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.stamina-fill {
+    height: 100%;
+    width: 75%;
+    background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+}
+
+.stamina-tip { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+
+/* KANBAN */
+.kanban {
+    display: flex;
+    gap: 10px;
+}
+
+.kanban-col {
+    flex: 1;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.kanban-task {
+    background: rgba(255,255,255,0.05);
+    padding: 8px;
+    border-radius: 6px;
+    margin-top: 8px;
+    border-left: 2px solid var(--yt-orange);
+}
+
+/* MILESTONES */
+.milestone-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.milestone-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.milestone-icon.green { background: rgba(0, 255, 136, 0.1); color: var(--lycee-green); }
+.milestone-icon.orange { background: rgba(255, 107, 0, 0.1); color: var(--yt-orange); }
+
+.milestone-info strong { display: block; font-size: 0.9rem; }
+.milestone-info span { font-size: 0.75rem; color: var(--text-dim); }

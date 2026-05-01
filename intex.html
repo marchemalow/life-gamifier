@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life RPG - Cyber Productivity</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- HEADER : PROFIL MULTI-CLASSE -->
+        <header class="profile-header glass">
+            <div class="profile-main">
+                <div class="avatar-container">
+                    <div class="avatar-glow"></div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" class="avatar">
+                </div>
+                <div class="profile-info">
+                    <h1>Niveau Global <span id="global-lvl">14</span></h1>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-classes">
+                <div class="class-card academic">
+                    <i data-lucide="graduation-cap"></i>
+                    <span>Academic LVL. 8</span>
+                    <div class="mini-bar"><div class="fill" style="width: 40%"></div></div>
+                </div>
+                <div class="class-card creator">
+                    <i data-lucide="youtube"></i>
+                    <span>Creator LVL. 12</span>
+                    <div class="mini-bar"><div class="fill" style="width: 85%"></div></div>
+                </div>
+                <div class="class-card copywriter">
+                    <i data-lucide="pen-tool"></i>
+                    <span>Copywriter LVL. 5</span>
+                    <div class="mini-bar"><div class="fill" style="width: 20%"></div></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            
+            <!-- QUÊTES JOURNALIÈRES -->
+            <section class="card glass section-quests">
+                <h2><i data-lucide="swords"></i> Quêtes Journalières</h2>
+                <div class="quest-list">
+                    <div class="quest-item academic">
+                        <i data-lucide="briefcase"></i>
+                        <span>Réviser Philo - 1h</span>
+                        <input type="checkbox">
+                    </div>
+                    <div class="quest-item creator">
+                        <i data-lucide="mic"></i>
+                        <span>Enregistrer Voix-Off</span>
+                        <input type="checkbox">
+                    </div>
+                    <div class="quest-item copywriter">
+                        <i data-lucide="feather"></i>
+                        <span>Newsletter Client A</span>
+                        <input type="checkbox">
+                    </div>
+                </div>
+            </section>
+
+            <!-- STAMINA SYSTEM -->
+            <section class="card glass section-stamina">
+                <h2><i data-lucide="zap"></i> Stamina</h2>
+                <div class="stamina-gauge">
+                    <div class="stamina-fill" id="stamina-fill"></div>
+                </div>
+                <p id="stamina-text">Énergie : 75%</p>
+                <p class="stamina-tip">Conseil : Prends une pause de 5 min (Pomodoro).</p>
+            </section>
+
+            <!-- KANBAN PIPELINE -->
+            <section class="card glass section-pipeline">
+                <h2><i data-lucide="layout"></i> Pipeline YouTube</h2>
+                <div class="kanban">
+                    <div class="kanban-col">
+                        <span>Idée</span>
+                        <div class="kanban-task">Projet Mars</div>
+                    </div>
+                    <div class="kanban-col">
+                        <span>Edit</span>
+                        <div class="kanban-task">Vlog #04</div>
+                    </div>
+                    <div class="kanban-col">
+                        <span>Done</span>
+                        <div class="kanban-task">Short 01</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FINANCES & LOOT -->
+            <section class="card glass section-loot">
+                <h2><i data-lucide="coins"></i> Loot & Trésor</h2>
+                <div class="income-tracker">
+                    <span class="amount">450€ / 1200€</span>
+                    <div class="mini-bar"><div class="fill" style="width: 38%"></div></div>
+                </div>
+                <div class="goal-item">
+                    <i data-lucide="camera"></i>
+                    <span>Objectif : Sony ZV-E10</span>
+                </div>
+            </section>
+
+            <!-- MILESTONES (BOSSES) -->
+            <section class="card glass section-milestones">
+                <h2><i data-lucide="trophy"></i> Grands Projets</h2>
+                <div class="milestone-item">
+                    <div class="milestone-icon green"><i data-lucide="target"></i></div>
+                    <div class="milestone-info">
+                        <strong>Bac de Français</strong>
+                        <span>Boss Final de l'Année</span>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-icon orange"><i data-lucide="users"></i></div>
+                    <div class="milestone-info">
+                        <strong>Passer les 1k Abonnés</strong>
+                        <span>Quête Légendaire</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
